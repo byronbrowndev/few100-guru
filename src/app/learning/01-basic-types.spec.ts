@@ -73,4 +73,49 @@ describe('basic data types', () => {
 
     });
   });
+  describe('built-in types', () => {
+
+    it('numbers', () => {
+      // 64 bit floating point numbers.
+
+      let n1 = 12;
+      let n2 = 3.1415;
+      let n3 = 0xFFF; // Base 16.
+      let n4 = 0o111; // base 8 - octal.
+      let n5 = 0b11011; // base 2 - binary.
+      let lindsayPay = 13_393_892_893; // thousands place thing.
+
+    });
+    describe('strings', () => {
+
+      it('standard string delimiters', () => {
+        let s1 = "dog";
+        let s2 = 'dog';
+        expect(s1).toBe(s2);
+
+        let story = "She said \"Hello\" to him";
+        let story2 = 'She said "Hello" to him';
+        expect(story).toBe(story2);
+      });
+      it('literal or format strings', () => {
+        let s1 = `dog`;
+        let s2 = 'dog';
+        expect(s1).toBe(s2);
+
+        let story = `Chapter 1.
+
+It was a dark and stormy night.
+
+The End`;
+        console.log(story);
+
+        let name = 'Earl', pay = 120_000;
+
+        let message = 'The customer\'s name is ' + name + ' and they are paid ' + pay + ' a year';
+        let message2 = `The customer's name is ${name} and they are paid ${pay} a year`;
+        console.log(message, message2);
+
+      });
+    });
+  });
 });
