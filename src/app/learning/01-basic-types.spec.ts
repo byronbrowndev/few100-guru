@@ -115,7 +115,67 @@ The End`;
         let message2 = `The customer's name is ${name} and they are paid ${pay} a year`;
         console.log(message, message2);
 
+        let message3 = `<div class="pretty">
+        <h1>Tacos are good</h1>
+        </div>`;
       });
     });
+
+    it('booleans', () => {
+      let ok = true;
+      let nope = false;
+
+      if ('tacos') {
+        console.log('Delicious!');
+      }
+      // truthy and falsy
+      // when a value is converted to a boolean, does it conver to true or false.
+      expect('tacos').toBeTruthy(); // any string with a greater than 0 length is true
+      expect('').toBeFalsy();
+      expect(9).toBeTruthy();
+      expect(-9).toBeTruthy();
+      expect(0).toBeFalsy();
+      expect(undefined).toBeFalsy();
+      expect(null).toBeFalsy();
+
+    });
+    it('testing for equality', () => {
+
+      // use === for equality
+      // use !== for inequality.
+
+      // if you want to convert, you do it yourself.
+
+      const pay = 12.93;
+
+      if (pay === 12.93) {
+
+      }
+    });
+  });
+
+  it('has a literal for objects', () => {
+    let pay = 32;
+
+    interface Movie {
+      title: string;
+      director: string;
+      yearReleased: number;
+    };
+    const jaws: Movie = {
+      title: 'Jaws',
+      director: 'Spielberg',
+      yearReleased: 1977
+    };
+
+
+    const starWars: Movie = {
+      title: 'Star Wars',
+      director: 'Lucas',
+      yearReleased: 1977
+    }
+
+
+
   });
 });
