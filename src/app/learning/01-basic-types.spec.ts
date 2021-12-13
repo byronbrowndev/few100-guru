@@ -48,5 +48,29 @@ describe('basic data types', () => {
 
       x = 'Tacos';
     });
+
+    it('declaring constants', () => {
+      const x = 12; // you cannot reassign a new value to this name.
+
+      // x = 13;
+
+      const jobs = ['Developer', 'QA', 'STE'];
+
+      // jobs = ['Fry Cook'];
+
+      jobs[0] = 'Fry Cook';
+
+      // jobs = [...jobs, 'Scrum Master']
+      jobs.push('Scrum Master');
+
+      expect(jobs).toEqual(['Fry Cook', 'QA', 'STE', 'Scrum Master']);
+
+
+      const book = { title: 'War and Piece', author: 'Tolstoy' };
+
+      book.title = 'War and Peace';
+
+
+    });
   });
 });
