@@ -178,4 +178,104 @@ The End`;
 
 
   });
+
+  describe('array literals', () => {
+
+    it('syntax 1', () => {
+      const friends = ['Sean', 'Billy', 'Amy'];
+
+      let luckyNumbers: (number | string)[];
+
+      luckyNumbers = [1, 9, 20, 108, 'tacos'];
+      let e = luckyNumbers[1];
+
+      luckyNumbers[1] = 'birds';
+
+    });
+
+    it('generic syntax', () => {
+      let friends: Array<string>;
+      let friends2: string[];
+
+      let luckyNumbers: Array<number | string>;
+      luckyNumbers = [1, 'two', 3];
+
+      if (luckyNumbers[3]) {
+        expect(true).toBeFalse(); // Blow up the test.
+      }
+    });
+
+    it('typed arrays - tuples ', () => {
+
+      let userInfo: [string, string, number, string[]];
+      userInfo = ['Warren', 'Ellis', 58, ['musician', 'artist', 'writer']];
+
+      let firstName = userInfo[0];
+      let age = userInfo[2];
+
+      // doing this with a more oop style.
+      const warren = {
+        firstName: 'Warren',
+        lastName: 'Ellis',
+        age: 58,
+        jobs: [
+          'musician',
+          'artist',
+          'writer'
+        ]
+      };
+
+
+      firstName = warren.firstName;
+
+
+
+    });
+
+
+  });
+
+  describe('object literals', () => {
+
+    it('object literals are anonymous objects', () => {
+
+      interface Artist {
+        firstName: string;
+        lastName: string;
+        age: number;
+        jobs: string[];
+        books?: string[];
+      }
+      const warren: Artist = {
+        firstName: 'Warren',
+        lastName: 'Ellis',
+        age: 58,
+        jobs: [
+          'musician',
+          'artist',
+          'writer'
+        ]
+      };
+
+
+      expect(warren.firstName).toBe('Warren');
+      expect(warren['firstName']).toBe('Warren');
+
+      warren.books = ['Nina Simone\'s Gum'];
+
+      const jimi: Artist = {
+        firstName: 'James',
+        lastName: 'Hendrix',
+        age: 27,
+        jobs: ['guitar god']
+      }
+
+    });
+
+  });
+
+  describe('function literals', () => {
+
+
+  });
 });
