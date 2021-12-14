@@ -181,6 +181,22 @@ describe('writing functions', () => {
 
 
     });
+    it('destructuring parameters', () => {
+      function doSomethingRad({ message, from }: { message: string, from: string }) {
+        console.log(`At ${new Date()} you got the following message ${message} from ${from}`);
+      }
+
+
+      doSomethingRad({ message: 'Hello', from: 'Jeff' });
+
+      const teacherAssignment = {
+        teacher: 'Byron Brown',
+        class: 'Few 100 Rebooted like JJ Abrams Does Movies'
+      }
+
+      expect(teacherAssignment['class']).not.toBe('Tacos');
+
+    });
   });
   describe('Array Methods', () => {
 
