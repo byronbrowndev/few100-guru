@@ -147,12 +147,39 @@ describe('writing functions', () => {
       expect(directedBy).toBe('Lucas');
 
       // mutate the object (BAD)
-      movie.director = 'Irvin Kershner';
+      // movie.director = 'Irvin Kershner';
+      const updatedMovie = { ...movie, director: 'Irvin Kershner' };
 
 
       // reassign the variable, use the grouping operator.
-      ({ director: directedBy } = movie); // "Grouping Operator"
+      ({ director: directedBy } = updatedMovie); // "Grouping Operator"
       expect(directedBy).toBe('Irvin Kershner');
+    });
+    it('a fake dictionary', () => {
+
+      interface Dictionary<T> {
+        [key: string]: T
+      }
+
+      interface Friend { name: string, phone: string }
+      // interface FriendList {
+      //   [key: string]: Friend
+      // }
+      const friends: Dictionary<Friend> = {
+        'sean': { name: 'Sean Carlin', phone: '777-7777' },
+        'byron': { name: 'Byron Brown', phone: '555-5555' },
+        'jenny smith': { name: 'Jenny Jones Smith', phone: '867-5309' },
+
+      };
+
+      const byronsPhone = friends['byron'].phone;
+      const herNumber = friends['jenny smith'].phone;
+
+      const newFriends = { ...friends, 'ryan': { name: 'Ryan', phone: '999-9999' } };
+
+
+
+
     });
   });
   describe('Array Methods', () => {
