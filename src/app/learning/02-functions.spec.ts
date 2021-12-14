@@ -40,4 +40,49 @@ describe('writing functions', () => {
     });
 
   });
+  describe('higher order functions', () => {
+
+    it('creating html elements the easy way 1', () => {
+
+
+      function createElement(tag: string, content: string): string {
+        return `<${tag}>${content}</${tag}>`;
+      }
+
+      expect(createElement('h1', 'hello')).toBe('<h1>hello</h1>');
+      expect(createElement('h1', 'goodbye')).toBe('<h1>goodbye</h1>');
+      expect(createElement('p', 'content')).toBe('<p>content</p>');
+
+    });
+
+    it('creating html elements the oop style', () => {
+
+      class ElementMaker {
+
+
+        constructor(private tag: string) { }
+
+        make(content: string): string {
+          return `<${this.tag}>${content}</${this.tag}>`;
+        }
+
+      }
+
+
+      const h1Maker = new ElementMaker('h1');
+
+      expect(h1Maker.make('Hello')).toBe('<h1>Hello</h1>');
+      expect(h1Maker.make('GoodBye')).toBe('<h1>GoodBye</h1>');
+      expect(h1Maker.make('Tacos')).toBe('<h1>Tacos</h1>');
+
+      const h2Maker = new ElementMaker('h2');
+      expect(h2Maker.make('Hello')).toBe('<h2>Hello</h2>');
+      expect(h2Maker.make('GoodBye')).toBe('<h2>GoodBye</h2>');
+      expect(h2Maker.make('Tacos')).toBe('<h2>Tacos</h2>');
+
+      const pMaker = new ElementMaker('p');
+      expect(pMaker.make('I cannot believe I did not giggle at the name of this variable!')).toBe('<p>I cannot believe I did not giggle at the name of this variable!</p>')
+    });
+
+  });
 });
