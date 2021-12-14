@@ -282,13 +282,80 @@ describe('writing functions', () => {
     it('example 1', () => {
 
       // double each of the numbers >= 4, then sum up just the even numbers.
-      const answer = ______;
+      const answer = numbers
+        .filter(n => n >= 4) // [4,5,6,7,8,9]
+        .map(n => n * 2) // [8, 10, 12, 14, 16, 19]
+        .filter(isEven)// [8, 10, 12, 14, 16]
+        .reduce((lhs, rhs) => lhs + rhs); // 78
 
-      expect(answer).toBe(??)
+      expect(answer).toBe(78);
 
 
     });
 
+    it('example 2', () => {
+
+      interface GameSummary {
+        highScorer: string;
+        highScore: number;
+        lowScorer: string;
+        lowScore: number;
+      }
+      interface BowlingGame {
+        name: string;
+        score: number;
+      }
+      const data: BowlingGame[] = [
+        { name: 'Jeff', score: 89 },
+        { name: 'Stacey', score: 208 },
+        { name: 'Violet', score: 178 },
+        { name: 'Henry', score: 108 }
+      ];
+
+      // These are bowling scores.  I want to know who had the highest score, who had the lowest score, and what their scores were.
+      // There are no ties in this example. If you figure it out, redo it so it can deal with ties.
+      // (in bowling, the highest score you can get is 300, and the lowest is 0. Highest score wins)
+
+      const initialState: GameSummary = {
+        highScore: -1,
+        highScorer: '',
+        lowScore: 301,
+        lowScorer: ''
+      }
+
+      const result: GameSummary = data.reduce((lhs: GameSummary, rhs: BowlingGame) => {
+        return {
+          highScore: rhs.score > lhs.highScore ? rhs.score : lhs.highScore,
+          highScorer: rhs.score > lhs.highScore ? rhs.name : lhs.highScorer,
+          lowScore: rhs.score < lhs.lowScore ? rhs.score : lhs.lowScore,
+          lowScorer: rhs.score < lhs.lowScore ? rhs.name : lhs.lowScorer
+        } as GameSummary;
+      }, initialState)
+
+      expect(result.highScorer).toBe('Stacey');
+      expect(result.highScore).toBe(208);
+      expect(result.lowScorer).toBe('Jeff');
+      expect(result.lowScore).toBe(89);
+    });
+
+    it('example/practice 3', () => {
+      const vehicles = [
+        { vin: '38739893893', make: 'Ford', model: 'Bronco', year: 2020, mileage: 120_000 },
+        { vin: '333383883', make: 'Chevy', model: 'Camaro', year: 1984, mileage: 310_000 },
+        { vin: '899389893', make: 'Honda', model: 'Pilot', year: 2017, mileage: 89_000 },
+        { vin: '8398983893', make: 'Range Rover', model: 'Evoque', year: 2016, mileage: 130_000 },
+      ];
+
+
+      // We want the make and model of all cars that have:
+      // high mileage (over 100,000 miles),
+      // and are newer than 2000
+      const answer: string[] = vehicles
+        .filter(v => v.mileage > 100_000 && v.year > 2000) // [{},{}]
+        .map(v => `${v.make} ${v.model}`) // ["", ""]
+
+      expect(answer).toEqual(['Ford Bronco', 'Range Rover Evoque']);
+    });
   });
 });
 
