@@ -272,9 +272,57 @@ The End`;
 
     });
 
+    it('structural typing', () => {
+
+      interface LoggableCall { message: string, from: string }
+
+      function doSomethingRad(thing: LoggableCall) {
+        console.log(`At ${new Date()} you got the following message ${thing.message} from ${thing.from}`);
+      }
+
+      function doSomethingRadWithAnonInterface(thing: { message: string, from: string }, numberOfTimes: number) {
+        console.log(`At ${new Date()} you got the following message ${thing.message} from ${thing.from}`);
+      }
+
+      const call = { from: 'Bill', message: 'Your tacos are ready for pickup', needsCallback: false }
+      doSomethingRad(call);
+
+
+    });
+
   });
 
   describe('function literals', () => {
+
+
+    it('needs to throw on web exception', () => {
+
+    });
+    it('named functions', () => {
+
+      expect(add(2, 2)).toBe(4);
+
+
+      function add(a: number, b: number): number {
+        return a + b;
+      }
+
+    });
+
+    it('anonymous functions', () => {
+      const subtract = (a: number, b: number): number => a - b;
+
+      const divide = (a: number, b: number): number => {
+        if (b === 0) {
+          throw 'Are you Crazy!';
+        } else {
+          return a / b;
+        }
+      };
+      expect(subtract(10, 2)).toBe(8);
+      expect(divide(10, 2)).toBe(5);
+      expect(() => divide(10, 0)).toThrow('Are you Crazy!');
+    });
 
 
   });
