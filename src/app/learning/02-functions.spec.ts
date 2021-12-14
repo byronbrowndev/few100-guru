@@ -58,14 +58,10 @@ describe('writing functions', () => {
     it('creating html elements the oop style', () => {
 
       class ElementMaker {
-
-
         constructor(private tag: string) { }
-
         make(content: string): string {
           return `<${this.tag}>${content}</${this.tag}>`;
         }
-
       }
 
 
@@ -84,5 +80,26 @@ describe('writing functions', () => {
       expect(pMaker.make('I cannot believe I did not giggle at the name of this variable!')).toBe('<p>I cannot believe I did not giggle at the name of this variable!</p>')
     });
 
+  });
+
+  it('a functional way to do the same thing', () => {
+
+    function elementMaker(tag: string): (content: string) => string {
+      return (content) => `<${tag}>${content}</${tag}>`
+    }
+
+    const h1Maker = elementMaker('h1');
+    const h2Maker = elementMaker('h2');
+    const pMaker = elementMaker('p');
+
+    expect(h1Maker('Hello')).toBe('<h1>Hello</h1>');
+    expect(h1Maker('GoodBye')).toBe('<h1>GoodBye</h1>');
+    expect(h1Maker('Tacos')).toBe('<h1>Tacos</h1>');
+
+    expect(h2Maker('Hello')).toBe('<h2>Hello</h2>');
+    expect(h2Maker('GoodBye')).toBe('<h2>GoodBye</h2>');
+    expect(h2Maker('Tacos')).toBe('<h2>Tacos</h2>');
+
+    expect(pMaker('I cannot believe I did not giggle at the name of this variable!')).toBe('<p>I cannot believe I did not giggle at the name of this variable!</p>')
   });
 });
