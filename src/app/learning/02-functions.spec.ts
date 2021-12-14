@@ -1,8 +1,15 @@
+
+// import * as fromUtils from "../utils/math";
+
+import { isEven } from "../utils/math";
+
+
 describe('writing functions', () => {
 
   describe('overloading a functions (spoiler - you cannot really do it)', () => {
 
     it('formatting a name', () => {
+
 
       function formatName(first: string, last: string, mi?: string): string {
         let fullName = `${last}, ${first}`;
@@ -201,5 +208,88 @@ describe('writing functions', () => {
   describe('Array Methods', () => {
 
     // map, filter, reducer,
+    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+    it('looking at each element of an array (forEach)', () => {
+      let total = 0;
+      numbers.forEach(e => total += e);
+      expect(total).toBe(45);
+      numbers.forEach((val, inx, array) => console.log({ val, inx, array }));
+    });
+
+    describe('methods that create new arrays from another array', () => {
+
+      it('has filter', () => {
+        // "Where" in Linq
+        const evens = numbers.filter(num => num % 2 === 0);
+
+        expect(evens).toEqual([2, 4, 6, 8]);
+        expect(numbers).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+
+      });
+
+      it('has map', () => {
+        // "Select" in LINQ
+        function doubleIt(x: number): number {
+          return x + x;
+        }
+
+        const doubled = numbers.map(doubleIt);
+
+        expect(doubled).toEqual([2, 4, 6, 8, 10, 12, 14, 16, 18]);
+
+        const stringIfied = numbers.map(n => n.toString());
+        expect(stringIfied).toEqual(['1', '2', '3', '4', '5', '6', '7', '8', '9'])
+
+      });
+    });
+
+    describe('methods that return a single (scalar) value', () => {
+
+      describe('methods that return a boolean', () => {
+        it('does every element meet this criteria?', () => {
+          const allEven = numbers.every(isEven);
+          expect(allEven).toBeFalse();
+        });
+
+        it('do any of the elements meet this criteria', () => {
+          const someEven = numbers.some(isEven);
+
+          expect(someEven).toBe(true);
+
+
+        });
+
+      });
+
+      it('boiling down an array to a single value of your choice!', () => {
+
+        const sum = numbers.reduce((l, r) => l + r);
+
+        expect(sum).toBe(45);
+
+        const bigSum = numbers.reduce((l, r) => l + r, 100);
+
+        expect(bigSum).toBe(145);
+      });
+
+
+    });
+  });
+
+  describe('using the array methods', () => {
+    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    it('example 1', () => {
+
+      // double each of the numbers >= 4, then sum up just the even numbers.
+      const answer = ______;
+
+      expect(answer).toBe(??)
+
+
+    });
+
   });
 });
+
+
