@@ -352,10 +352,12 @@ describe('writing functions', () => {
       // and are newer than 2000
       const answer: string[] = vehicles
         .filter(v => v.mileage > 100_000 && v.year > 2000) // [{},{}]
-        .map(v => `${v.make} ${v.model}`) // ["", ""]
+        .map(v => `${v.make} ${v.model}`); // ["", ""]
 
       expect(answer).toEqual(['Ford Bronco', 'Range Rover Evoque']);
     });
+
+
   });
 });
 
