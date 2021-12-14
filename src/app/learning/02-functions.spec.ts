@@ -24,10 +24,10 @@ describe('writing functions', () => {
 
     it('interspersed optional parameters', () => {
 
-      function add(a: number = 10, b: number = 2, ...extra: number[]): number {
+      function add(a: number = 10, b: number = 2, ...rest: number[]): number {
         const initialState = a + b;
 
-        return extra.reduce((lhs, rhs) => lhs + rhs, initialState);
+        return rest.reduce((lhs, rhs) => lhs + rhs, initialState);
       }
 
       expect(add()).toBe(12);
@@ -103,5 +103,60 @@ describe('writing functions', () => {
     expect(pMaker('I cannot believe I did not giggle at the name of this variable!')).toBe('<p>I cannot believe I did not giggle at the name of this variable!</p>');
 
     expect(elementMaker('span')('stuff')).toBe('<span>stuff</span>');
+  });
+
+  describe('object and array destructuring', () => {
+    // and refer back to the rest and spread operators.
+    it('array destructuring', () => {
+      const friends = ['Sean', 'Billy', 'Amy', 'Scott', 'Jill', 'Byron'];
+
+      // let firstFriend = friends[0];
+      // let thirdFriend = friends[2];
+      // Array Destructuring.
+      let [firstFriend, , thirdFriend, ...rest] = friends;
+
+      expect(firstFriend).toBe('Sean');
+      expect(thirdFriend).toBe('Amy');
+      expect(rest).toEqual(['Scott', 'Jill', 'Byron']);
+
+    });
+    it('the spread operator', () => {
+      const friends = ['Sean', 'Billy', 'Amy', 'Scott', 'Jill', 'Byron'];
+
+      const newFriends = ['Stacey', ...friends, 'David'];
+
+      expect(newFriends).toEqual(['Stacey', 'Sean', 'Billy', 'Amy', 'Scott', 'Jill', 'Byron', 'David'])
+    });
+
+    it('destructuring objects and the spread operator on objects', () => {
+      const movie = {
+        title: 'Star Wars: The Empire Strikes Back',
+        director: 'Lucas',
+        genre: 'Sci-Fi'
+      };
+
+      // let title = movie.title;
+      // let genre = movie.genre;
+
+      let { title, genre, director: directedBy } = movie;
+
+      expect(title).toBe('Star Wars: The Empire Strikes Back');
+      expect(genre).toBe('Sci-Fi');
+
+      // let { director: directedBy } = movie;
+      expect(directedBy).toBe('Lucas');
+
+      // mutate the object (BAD)
+      movie.director = 'Irvin Kershner';
+
+
+      // reassign the variable, use the grouping operator.
+      ({ director: directedBy } = movie); // "Grouping Operator"
+      expect(directedBy).toBe('Irvin Kershner');
+    });
+  });
+  describe('Array Methods', () => {
+
+    // map, filter, reducer,
   });
 });
