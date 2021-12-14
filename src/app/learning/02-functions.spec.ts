@@ -100,6 +100,8 @@ describe('writing functions', () => {
     expect(h2Maker('GoodBye')).toBe('<h2>GoodBye</h2>');
     expect(h2Maker('Tacos')).toBe('<h2>Tacos</h2>');
 
-    expect(pMaker('I cannot believe I did not giggle at the name of this variable!')).toBe('<p>I cannot believe I did not giggle at the name of this variable!</p>')
+    expect(pMaker('I cannot believe I did not giggle at the name of this variable!')).toBe('<p>I cannot believe I did not giggle at the name of this variable!</p>');
+
+    expect(elementMaker('span')('stuff')).toBe('<span>stuff</span>');
   });
 });
