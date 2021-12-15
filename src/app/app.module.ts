@@ -7,6 +7,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { GiftGivingComponent } from './components/gift-giving/gift-giving.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { GiftEntryComponent } from './components/gift-giving/gift-entry/gift-entry.component';
+import { GiftListComponent } from './components/gift-giving/gift-list/gift-list.component';
 
 
 
@@ -16,7 +18,9 @@ import { NavigationComponent } from './components/navigation/navigation.componen
     HeaderComponent,
     GiftGivingComponent,
     DashboardComponent,
-    NavigationComponent
+    NavigationComponent,
+    GiftEntryComponent,
+    GiftListComponent
   ],
   imports: [
     BrowserModule,
