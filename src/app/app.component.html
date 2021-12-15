@@ -1,12 +1,6 @@
-<h1>{{ title }}</h1>
+<app-header></app-header>
 
-<ul>
-  <li *ngFor="let holiday of upcomingHolidays">
-    <span (click)="removeHoliday(holiday)">{{ holiday }}</span>
-  </li>
-</ul>
-
-<div>
-  <input #holidayElement>
-  <button (click)="addHoliday(holidayElement.value)">Click Me to Add A Holiday</button>
-</div>
+<main class="container">
+  <app-navigation></app-navigation>
+  <router-outlet></router-outlet>
+</main>
