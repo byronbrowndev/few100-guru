@@ -1,1 +1,8 @@
-<p>dashboard works!</p>
+<div class="alert alert-info">
+  <h3>Gift Giving:</h3>
+  <p>You have {{ (summary$ | async)?.numberToPurchase }} Gifts Yet To Buy</p>
+  <ul>
+    <li *ngFor="let desc of (summary$ | async)?.items">{{desc}}</li>
+
+  </ul>
+</div>
