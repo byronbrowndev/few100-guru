@@ -22,9 +22,11 @@ export class GiftEntryComponent {
   constructor(private formBuilder: FormBuilder) { }
 
 
-  submit() {
+  submit(foci: HTMLInputElement) {
     if (this.form.valid) {
       console.log(this.form.value);
+      this.form.reset();
+      foci.focus();
     } else {
       Object.keys(this.form.controls).forEach(field => {
         const control = this.form.get(field);
