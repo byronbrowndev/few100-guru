@@ -1,16 +1,19 @@
-export class Employee {
+import { ProvidesCompensationInformation } from "./compensation.interface";
+import { Person } from "./person";
+
+export class Employee extends Person implements ProvidesCompensationInformation {
 
   private _salary: number;
-  firstName = '';
-  lastName = '';
+
 
   constructor(startingSalary: number) {
+    super();
     this._salary = startingSalary;
   }
-
-  get fullName() {
-    return `${this.lastName}, ${this.firstName}`;
+  getCompensation() {
+    return this._salary;
   }
+
 
   get salary() {
     return this._salary;
