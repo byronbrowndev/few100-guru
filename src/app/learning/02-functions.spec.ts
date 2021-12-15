@@ -347,6 +347,7 @@ describe('writing functions', () => {
       ];
 
 
+
       // We want the make and model of all cars that have:
       // high mileage (over 100,000 miles),
       // and are newer than 2000
