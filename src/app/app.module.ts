@@ -10,6 +10,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { GiftEntryComponent } from './components/gift-giving/gift-entry/gift-entry.component';
 import { GiftListComponent } from './components/gift-giving/gift-list/gift-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { GiftDataService } from 'src/services/gift-data.service';
 
 
 
@@ -28,7 +29,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [GiftDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GiftListItemCreate, GiftListItemModel } from 'src/app/models';
+import { GiftDataService } from 'src/services/gift-data.service';
 
 @Component({
   selector: 'app-gift-giving',
@@ -7,23 +8,14 @@ import { GiftListItemCreate, GiftListItemModel } from 'src/app/models';
   styleUrls: ['./gift-giving.component.css']
 })
 export class GiftGivingComponent {
-  private currentId = 4;
-  data: GiftListItemModel[] = [
-    { id: '1', description: 'Beer', for: 'Jeff', due: '2021-12-15', purchased: false },
-    { id: '2', description: 'XBox Crap', for: 'Henry', due: '2021-12-24', purchased: false },
-    { id: '3', description: 'Horror Makeup', for: 'Violet', due: '2021-12-24', purchased: true },
-  ];
-  constructor() { }
+
+  data$ = this.service.getData();
+
+  constructor(private service: GiftDataService) { }
 
 
   addGiftItem(item: GiftListItemCreate) {
-    const itemToAdd = {
-      ...item,
-      id: (this.currentId++).toString(),
-      purchased: false
-    } as GiftListItemModel;
-    this.data = [itemToAdd, ...this.data];
-
+    this.service.addData(item);
   }
 
 }

@@ -9,7 +9,7 @@ import { GiftListItemModel } from 'src/app/models';
 export class GiftListComponent {
 
   @Input()
-  giftList: GiftListItemModel[] = [];
+  giftList: GiftListItemModel[] | null = [];
 
   constructor() { }
 
