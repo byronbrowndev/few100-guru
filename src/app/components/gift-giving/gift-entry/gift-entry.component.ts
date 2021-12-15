@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { GiftListItemCreate } from 'src/app/models';
 
 @Component({
   selector: 'app-gift-entry',
@@ -7,6 +8,9 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./gift-entry.component.css']
 })
 export class GiftEntryComponent {
+
+  @Output()
+  giftAdded = new EventEmitter<GiftListItemCreate>();
 
   form = this.formBuilder.group({
     description: ['', [Validators.required]],
@@ -24,7 +28,7 @@ export class GiftEntryComponent {
 
   submit(foci: HTMLInputElement) {
     if (this.form.valid) {
-      console.log(this.form.value);
+      this.giftAdded.emit(this.form.value);
       this.form.reset();
       foci.focus();
     } else {

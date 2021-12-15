@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { GiftListItemModel } from 'src/app/models';
 
 @Component({
@@ -8,11 +8,9 @@ import { GiftListItemModel } from 'src/app/models';
 })
 export class GiftListComponent {
 
-  giftList: GiftListItemModel[] = [
-    { id: '1', description: 'Beer', for: 'Jeff', due: '2021-12-15', purchased: false },
-    { id: '2', description: 'XBox Crap', for: 'Henry', due: '2021-12-24', purchased: false },
-    { id: '3', description: 'Horror Makeup', for: 'Violet', due: '2021-12-24', purchased: true },
-  ];
+  @Input()
+  giftList: GiftListItemModel[] = [];
+
   constructor() { }
 
   markPurchased(item: GiftListItemModel) {

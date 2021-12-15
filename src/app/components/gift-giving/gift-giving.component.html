@@ -2,8 +2,8 @@
   <h2>Gift Giving</h2>
 </header>
 <section>
-  <app-gift-entry></app-gift-entry>
+  <app-gift-entry (giftAdded)="addGiftItem($event)"></app-gift-entry>
 </section>
 <section>
-  <app-gift-list></app-gift-list>
+  <app-gift-list [giftList]="data"></app-gift-list>
 </section>
