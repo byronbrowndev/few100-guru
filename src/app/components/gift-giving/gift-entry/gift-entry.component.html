@@ -1,1 +1,38 @@
-<p>Entry component goes here</p>
+<form [formGroup]="form"
+      (ngSubmit)="submit()">
+
+  <div class="form-group">
+    <label for="description">Description</label>
+    <input class="form-control"
+           id="description"
+           formControlName="description">
+
+    <div class="alert alert-danger"
+         *ngIf="description?.errors && (description?.touched || description?.dirty)">
+      <p *ngIf=" description?.hasError('required')">This is required</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="for">For</label>
+    <input class="form-control"
+           id="for"
+           formControlName="for">
+    <div class="alert alert-danger"
+         *ngIf="for?.errors && (for?.touched || for?.dirty)">
+      <p *ngIf=" for?.hasError('required')">This is required</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="due">Due</label>
+    <input type="date"
+           class="form-control"
+           id="due"
+           formControlName="due">
+    <div class="alert alert-danger"
+         *ngIf="due?.errors && (due?.touched || due?.dirty)">
+      <p *ngIf=" due?.hasError('required')">This is required</p>
+    </div>
+  </div>
+  <button type="submit"
+          class="btn btn-success">Add This to Your List</button>
+</form>

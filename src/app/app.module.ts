@@ -9,6 +9,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { GiftEntryComponent } from './components/gift-giving/gift-entry/gift-entry.component';
 import { GiftListComponent } from './components/gift-giving/gift-list/gift-list.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -24,7 +25,8 @@ import { GiftListComponent } from './components/gift-giving/gift-list/gift-list.
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
