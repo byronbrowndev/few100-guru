@@ -1,5 +1,6 @@
 describe('basic data types', () => {
 
+
   it('is easy to declare a variable', () => {
 
     let a = 10, b = 20;
@@ -9,8 +10,12 @@ describe('basic data types', () => {
     expect(answer).toBe(30);
   });
 
+  /**
+   * A bit of this is meant to show what TypeScript offers in addition to JavaScript.
+   */
   describe('declaring variables', () => {
 
+    /** JavaScript has data types, but is not strictly typed. A variable can change it's type whenever. */
     it('untyped variables', () => {
       let a;
 
@@ -30,6 +35,11 @@ describe('basic data types', () => {
 
       expect(a(10)).toBe(20);
     });
+    /**
+     * I start with just adding a type, then show a union type. This is meant to be a little bit of a "were not in Kansas, Toto" moment
+     * so they can see that this isn't C#. Emphasize that the TypeScript language service knows what intellisense to offer depending on the current
+     * value of the type.
+     */
     it('setting data types for a variable', () => {
 
       let x: number | string; // Union.
@@ -41,6 +51,9 @@ describe('basic data types', () => {
 
     });
 
+    /**
+     * Providing a data type for a variable that you initialize with a value is only needed if it is a union type.
+     */
     it('initializing a variable', () => {
       let x: number | string = 12;
       let y = 18;
@@ -49,6 +62,10 @@ describe('basic data types', () => {
       x = 'Tacos';
     });
 
+    /**
+     * This is confusing for a lot of people. A name decalared as a "const" simply cannot be reassigned to. It does not make
+     * the value itself immutable.
+     */
     it('declaring constants', () => {
       const x = 12; // you cannot reassign a new value to this name.
 
@@ -73,8 +90,14 @@ describe('basic data types', () => {
 
     });
   });
+  /**
+   * An overview of the 'built in' types - the literals for them.
+   */
   describe('built-in types', () => {
 
+    /**
+     * there are only 64 bit floating point numbers in a browser. They can be represented many different ways though.
+     */
     it('numbers', () => {
       // 64 bit floating point numbers.
 
@@ -179,20 +202,27 @@ The End`;
 
   });
 
+  /**
+   * I try not to get too deep into working with arrays here. Just the syntax for declaring them.
+   */
   describe('array literals', () => {
 
+    /**
+     * The most common way to declare a variable.
+     */
     it('syntax 1', () => {
-      const friends = ['Sean', 'Billy', 'Amy'];
 
-      let luckyNumbers: (number | string)[];
+      const codez: number[]; // created, not initialized.
+      const friends = ['Sean', 'Billy', 'Amy']; // initialized
+
+      let luckyNumbers: (number | string)[]; // a union type array.
 
       luckyNumbers = [1, 9, 20, 108, 'tacos'];
       let e = luckyNumbers[1];
 
-      luckyNumbers[1] = 'birds';
-
-    });
-
+      /**
+       * Show the generic syntax for reference. Another way to declare arrays.
+       */
     it('generic syntax', () => {
       let friends: Array<string>;
       let friends2: string[];
@@ -205,6 +235,9 @@ The End`;
       }
     });
 
+    /**
+     * Not going too far here. I point out that this is the syntax used in reactive forms for the validators.
+     */
     it('typed arrays - tuples ', () => {
 
       let userInfo: [string, string, number, string[]];
@@ -236,7 +269,9 @@ The End`;
   });
 
   describe('object literals', () => {
-
+    /**
+     * Wish I was better at making this a "wow" moment - we have objects, but no classes!
+     */
     it('object literals are anonymous objects', () => {
 
       interface Artist {
@@ -272,6 +307,9 @@ The End`;
 
     });
 
+    /**
+     * Huge huge huge. Hard to get across, but this is the magic of TypeScript - and I love it dearly.
+     */
     it('structural typing', () => {
 
       interface LoggableCall { message: string, from: string }
@@ -292,12 +330,15 @@ The End`;
 
   });
 
+  /**
+   * Again, a bit abstract but they need to see the syntax.
+   * Named functions can be forward referenced, arrow functions cannot.
+   *
+   */
   describe('function literals', () => {
 
 
-    it('needs to throw on web exception', () => {
 
-    });
     it('named functions', () => {
 
       expect(add(2, 2)).toBe(4);

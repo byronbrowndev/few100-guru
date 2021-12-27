@@ -1,6 +1,8 @@
 
 // import * as fromUtils from "../utils/math";
-
+/** I add this in after we've created (x) => x % 2 === 0 a few times, a good way to introduce modules and importing.
+ * Spend a LOT of time showing how to have VSCode import stuff for you. It pays off later.
+ */
 import { isEven } from "../utils/math";
 
 
@@ -8,6 +10,9 @@ describe('writing functions', () => {
 
   describe('overloading a functions (spoiler - you cannot really do it)', () => {
 
+    /**
+     * Optional arguments, defaults, all that jazz.
+     */
     it('formatting a name', () => {
 
 
@@ -31,6 +36,7 @@ describe('writing functions', () => {
 
     it('interspersed optional parameters', () => {
 
+      /** In C# optional arguments can only be the last arguments. This is different. And ...rest is "params" in C# */
       function add(a: number = 10, b: number = 2, ...rest: number[]): number {
         const initialState = a + b;
 
@@ -49,6 +55,15 @@ describe('writing functions', () => {
   });
   describe('higher order functions', () => {
 
+    /**
+     * A higher ordered function is a function that takes one or more functions as an argument and/or returns a function. This "createSelector",
+     * it takes n functions as argument, and returns a function.
+     */
+
+
+    /**
+     * First example is just writing a normal function that takes data as arguments and returns data.
+     */
     it('creating html elements the easy way 1', () => {
 
 
@@ -64,6 +79,7 @@ describe('writing functions', () => {
 
     it('creating html elements the oop style', () => {
 
+      /** A clever way to introduce a class. A class is a function that returns an object. */
       class ElementMaker {
         constructor(private tag: string) { }
         make(content: string): string {
@@ -91,6 +107,10 @@ describe('writing functions', () => {
 
   it('a functional way to do the same thing', () => {
 
+    /**
+     * A functional way to do it - this function returns a function. You give it the first argument, it returns a second function
+     * that takes the second argument.
+     */
     function elementMaker(tag: string): (content: string) => string {
       return (content) => `<${tag}>${content}</${tag}>`
     }
@@ -114,6 +134,7 @@ describe('writing functions', () => {
 
   describe('object and array destructuring', () => {
     // and refer back to the rest and spread operators.
+    /** Spend some time on this. It is really confusing for people. */
     it('array destructuring', () => {
       const friends = ['Sean', 'Billy', 'Amy', 'Scott', 'Jill', 'Byron'];
 
@@ -164,6 +185,7 @@ describe('writing functions', () => {
     });
     it('a fake dictionary', () => {
 
+      /** Sneaking in a little generics. This is also how @ngrx/entity stores data. */
       interface Dictionary<T> {
         [key: string]: T
       }
@@ -189,6 +211,10 @@ describe('writing functions', () => {
 
     });
     it('destructuring parameters', () => {
+
+      /** I added this because Byron Brown asked me about it before and he didn't even show up for this part of my class.
+       * it is used in createAction with the props function.
+       */
       function doSomethingRad({ message, from }: { message: string, from: string }) {
         console.log(`At ${new Date()} you got the following message ${message} from ${from}`);
       }
@@ -205,6 +231,14 @@ describe('writing functions', () => {
 
     });
   });
+
+  /**
+   * SUPER important stuff. it's good training for selector functions, and for the rxjs operators.
+   * Emphasize these are the "loops" we use (notice no other loops are shown), and they are immutable. They don't change
+   * the source array every never.
+   *
+   * Tell them to be skeptical of any methods that change data. None of these do.
+   */
   describe('Array Methods', () => {
 
     // map, filter, reducer,
@@ -278,6 +312,9 @@ describe('writing functions', () => {
   });
 
   describe('using the array methods', () => {
+    /**
+     * I do this as a practice. Have them try it.
+     */
     const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     it('example 1', () => {
 
@@ -295,6 +332,12 @@ describe('writing functions', () => {
 
     it('example 2', () => {
 
+
+      /** An Advanced practice. I create the array with no types (the data array below) and have them tell me, with what we've learned,
+       * who has the highest score and what is the score? Who has the lowest score and what was that score.
+       * Then I do it, and the FIRST thing I do is create the types (interfaces), for the answer (GameSummary), and the data itself (BowlingGame).
+       *
+       */
       interface GameSummary {
         highScorer: string;
         highScore: number;
@@ -339,6 +382,8 @@ describe('writing functions', () => {
     });
 
     it('example/practice 3', () => {
+
+      /** Another easier practice. */
       const vehicles = [
         { vin: '38739893893', make: 'Ford', model: 'Bronco', year: 2020, mileage: 120_000 },
         { vin: '333383883', make: 'Chevy', model: 'Camaro', year: 1984, mileage: 310_000 },
