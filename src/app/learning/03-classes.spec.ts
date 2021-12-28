@@ -1,5 +1,9 @@
 import { Employee, ProvidesCompensationInformation, Retiree } from '../hr'
 
+/** Standard OOP stuff. Be careful not to go too far.
+ * I do a "barrel" so they know how that works, etc.
+ * The properties stuff is a bit important on components.
+ */
 describe('creating and using classes', () => {
 
   it('Creating an Employee', () => {
